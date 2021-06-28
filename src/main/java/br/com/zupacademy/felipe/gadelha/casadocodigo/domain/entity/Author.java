@@ -19,7 +19,7 @@ public class Author {
 	private Long id;
 	@Column(nullable = false)
 	private String name;
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	private String email;
 	@Size(max = 400)
 	private String description;

@@ -2,19 +2,26 @@ package br.com.zupacademy.felipe.gadelha.casadocodigo.api.dto.request;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
 
-import com.sun.istack.NotNull;
 
+import br.com.zupacademy.felipe.gadelha.casadocodigo.api.validator.UniqueValue;
 import br.com.zupacademy.felipe.gadelha.casadocodigo.domain.entity.Author;
 
 public class AuthorRq {
 
 	@NotNull @NotBlank
 	private String name;
-	@NotNull @NotBlank @Email
+	
+	@NotNull @NotBlank @Email 
+//	@UniqueValue(
+//			fieldName = "email", 
+//			domainClass = Author.class, 
+//			message = "Este endereço de email já existe")
 	private String email;
+	
 	@Length(max = 400)
 	private String description;
 	

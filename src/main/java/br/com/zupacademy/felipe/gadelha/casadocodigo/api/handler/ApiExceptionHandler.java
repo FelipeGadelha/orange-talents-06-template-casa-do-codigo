@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
@@ -51,4 +52,27 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 					.build(), headers, status);
 	}
 	
+	@ExceptionHandler(IllegalStateException.class)
+	public ResponseEntity<Object> handleIllegalStateException(IllegalStateException ex) {
+		return new ResponseEntity<>(
+				ExceptionDetails.builder()
+				.timestamp(OffsetDateTime.now())
+				.status(HttpStatus.INTERNAL_SERVER_ERROR.value())
+				.title(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase() + " Exception, Check the Documentation")
+				.details(ex.getMessage())
+				.developerMessage(ex.getClass().getName())
+				.build(), HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
+	@ExceptionHandler({ Exception.class })
+	public ResponseEntity<Object> handleAll(Exception ex) {
+		return new ResponseEntity<>(
+				ExceptionDetails.builder()
+				.timestamp(OffsetDateTime.now())
+				.status(HttpStatus.INTERNAL_SERVER_ERROR.value())
+				.title(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase() + " Exception, Check the Documentation")
+				.details(ex.getCause().getMessage())
+				.developerMessage(ex.getClass().getName())
+				.build(), HttpStatus.INTERNAL_SERVER_ERROR);
+	}
 }
