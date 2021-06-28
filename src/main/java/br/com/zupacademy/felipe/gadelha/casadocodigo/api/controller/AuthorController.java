@@ -28,7 +28,10 @@ public class AuthorController {
 	@Transactional
 	public ResponseEntity<AuthorRs> save(@RequestBody @Valid AuthorRq authorRq, UriComponentsBuilder uriBuilder) {
 		var author = authorRepository.save(authorRq.convert());
-		var uri = uriBuilder.path("/authors/{id}").buildAndExpand(author.getId()).toUri();
+		var uri = uriBuilder
+				.path("/authors/{id}")
+				.buildAndExpand(author.getId())
+				.toUri();
 		return ResponseEntity.created(uri).body(new AuthorRs(author));
 	}
 	
