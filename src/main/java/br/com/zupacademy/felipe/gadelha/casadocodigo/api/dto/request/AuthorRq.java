@@ -16,10 +16,10 @@ public class AuthorRq {
 	private String name;
 	
 	@NotNull @NotBlank @Email 
-//	@UniqueValue(
-//			fieldName = "email", 
-//			domainClass = Author.class, 
-//			message = "Este endereço de email já existe")
+	@UniqueValue(
+			fieldName = "email", 
+			domainClass = Author.class, 
+			message = "Este endereço de email já existe")
 	private String email;
 	
 	@Length(max = 400)
@@ -34,7 +34,6 @@ public class AuthorRq {
 	public String getDescription() {
 		return description;
 	}
-	
 	public Author convert() {
 		return Author
 				.builder()
