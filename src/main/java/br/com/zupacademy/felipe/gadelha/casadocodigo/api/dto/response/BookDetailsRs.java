@@ -5,30 +5,28 @@ import java.time.LocalDate;
 
 import br.com.zupacademy.felipe.gadelha.casadocodigo.domain.entity.Book;
 
-public class BookRs {
+public class BookDetailsRs {
 
 	private Long id;
 	private String title;
+	private String isbn;
 	private String resume;
-	private String sumary;
 	private Integer numberPages;
 	private BigDecimal price;
-	private String isbn;
 	private LocalDate publishDate;
-	private Long categoryId;
-	private Long authorId;
+	private CategoryRs categoryRs;
+	private AuthorDetailsRs authorDetailsRs;
 
-	public BookRs(Book book) {
+	public BookDetailsRs(Book book) {
 		id = book.getId();
 		title = book.getTitle();
+		isbn = book.getIsbn();
 		resume = book.getResume();
-		sumary = book.getSumary();
 		numberPages = book.getNumberPages();
 		price = book.getPrice();
-		isbn = book.getIsbn();
 		publishDate = book.getPublishDate();
-		categoryId = book.getCategory().getId();
-		authorId = book.getAuthor().getId();
+		categoryRs = new CategoryRs(book.getCategory());
+		authorDetailsRs = new AuthorDetailsRs(book.getAuthor());
 	}
 	public Long getId() {
 		return id;
@@ -36,11 +34,11 @@ public class BookRs {
 	public String getTitle() {
 		return title;
 	}
+	public String getIsbn() {
+		return isbn;
+	}
 	public String getResume() {
 		return resume;
-	}
-	public String getSumary() {
-		return sumary;
 	}
 	public Integer getNumberPages() {
 		return numberPages;
@@ -48,16 +46,13 @@ public class BookRs {
 	public BigDecimal getPrice() {
 		return price;
 	}
-	public String getIsbn() {
-		return isbn;
-	}
 	public LocalDate getPublishDate() {
 		return publishDate;
 	}
-	public Long getCategoryId() {
-		return categoryId;
+	public CategoryRs getCategoryRs() {
+		return categoryRs;
 	}
-	public Long getAuthorId() {
-		return authorId;
+	public AuthorDetailsRs getAuthorDetailsRs() {
+		return authorDetailsRs;
 	}
 }

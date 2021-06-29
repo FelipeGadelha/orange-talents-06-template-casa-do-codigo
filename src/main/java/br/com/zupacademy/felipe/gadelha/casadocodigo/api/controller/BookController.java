@@ -1,12 +1,14 @@
 package br.com.zupacademy.felipe.gadelha.casadocodigo.api.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.zupacademy.felipe.gadelha.casadocodigo.api.dto.request.BookRq;
+import br.com.zupacademy.felipe.gadelha.casadocodigo.api.dto.response.BookDetailsRs;
 import br.com.zupacademy.felipe.gadelha.casadocodigo.api.dto.response.BookRs;
+import br.com.zupacademy.felipe.gadelha.casadocodigo.domain.entity.Book;
 import br.com.zupacademy.felipe.gadelha.casadocodigo.domain.projection.BookProjection;
 import br.com.zupacademy.felipe.gadelha.casadocodigo.domain.repository.AuthorRepository;
 import br.com.zupacademy.felipe.gadelha.casadocodigo.domain.repository.BookRepository;
@@ -48,5 +52,13 @@ public class BookController {
 				.buildAndExpand(book.getId())
 				.toUri();
 		return ResponseEntity.created(uri).body(new BookRs(book));
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<BookDetailsRs> details(@PathVariable("id") Long id) {
+		Optional<Book> optional = bookRepository.findById(id);
+		return (optional.isPresent()) 
+				? ResponseEntity.ok(new BookDetailsRs(optional.get())) 
+						: ResponseEntity.notFound().build();
 	}
 }
