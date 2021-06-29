@@ -51,7 +51,7 @@ public class BookRq {
 	private Long categoryId;
 	@NotNull
 	private Long authorId;
-	
+
 	public String getTitle() {
 		return title;
 	}
