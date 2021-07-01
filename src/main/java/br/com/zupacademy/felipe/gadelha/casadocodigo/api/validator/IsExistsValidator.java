@@ -9,6 +9,8 @@ import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.util.Assert;
 
+import br.com.zupacademy.felipe.gadelha.casadocodigo.api.validator.annotation.IsExists;
+
 public class IsExistsValidator implements ConstraintValidator<IsExists, Object> {
 
 	private String domainAttribute;
@@ -25,10 +27,12 @@ public class IsExistsValidator implements ConstraintValidator<IsExists, Object> 
 
 	@Override
 	public boolean isValid(Object value, ConstraintValidatorContext context) {
-		var query = manager.createQuery("select 1 from " + klass.getName() + " where " + domainAttribute + " =:value");
-		query.setParameter("value", value);
-		List<?> list = query.getResultList();
-		Assert.state(list.isEmpty(), "Não existe " + klass.getSimpleName() + " com o " + domainAttribute + " : " + value);
+		List<?> list = manager
+				.createQuery("select 1 from " + klass.getName() + " where " + domainAttribute + " =:pValue")
+				.setParameter("pValue", value)
+				.getResultList();
+		Assert.isTrue(list.size() <= 1,
+				"Não existe " + klass.getSimpleName() + " com o " + domainAttribute + " : " + value);
 		return !list.isEmpty();
 	}
 }

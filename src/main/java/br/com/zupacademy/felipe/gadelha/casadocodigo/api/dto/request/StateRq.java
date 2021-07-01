@@ -7,8 +7,8 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.util.Assert;
 
-import br.com.zupacademy.felipe.gadelha.casadocodigo.api.validator.IsExists;
-import br.com.zupacademy.felipe.gadelha.casadocodigo.api.validator.IsUniqueForNation;
+import br.com.zupacademy.felipe.gadelha.casadocodigo.api.validator.annotation.IsExists;
+import br.com.zupacademy.felipe.gadelha.casadocodigo.api.validator.annotation.IsUniqueForNation;
 import br.com.zupacademy.felipe.gadelha.casadocodigo.domain.entity.Nation;
 import br.com.zupacademy.felipe.gadelha.casadocodigo.domain.entity.State;
 import br.com.zupacademy.felipe.gadelha.casadocodigo.domain.repository.NationRepository;

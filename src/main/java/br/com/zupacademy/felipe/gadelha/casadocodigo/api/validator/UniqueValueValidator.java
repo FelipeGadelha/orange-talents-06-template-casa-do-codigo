@@ -9,6 +9,8 @@ import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.util.Assert;
 
+import br.com.zupacademy.felipe.gadelha.casadocodigo.api.validator.annotation.UniqueValue;
+
 public class UniqueValueValidator implements ConstraintValidator<UniqueValue, Object>{
 
 	private String domainAttribute;

@@ -3,7 +3,7 @@ package br.com.zupacademy.felipe.gadelha.casadocodigo.api.dto.request;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import br.com.zupacademy.felipe.gadelha.casadocodigo.api.validator.UniqueValue;
+import br.com.zupacademy.felipe.gadelha.casadocodigo.api.validator.annotation.UniqueValue;
 import br.com.zupacademy.felipe.gadelha.casadocodigo.domain.entity.Category;
 
 public class CategoryRq {

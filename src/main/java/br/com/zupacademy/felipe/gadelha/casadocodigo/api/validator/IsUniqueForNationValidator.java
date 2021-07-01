@@ -9,6 +9,7 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 import br.com.zupacademy.felipe.gadelha.casadocodigo.api.dto.request.StateRq;
+import br.com.zupacademy.felipe.gadelha.casadocodigo.api.validator.annotation.IsUniqueForNation;
 import br.com.zupacademy.felipe.gadelha.casadocodigo.domain.entity.Nation;
 
 public class IsUniqueForNationValidator implements ConstraintValidator<IsUniqueForNation, Object>{

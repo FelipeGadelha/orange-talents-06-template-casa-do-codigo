@@ -2,7 +2,7 @@ package br.com.zupacademy.felipe.gadelha.casadocodigo.api.dto.request;
 
 import javax.validation.constraints.NotBlank;
 
-import br.com.zupacademy.felipe.gadelha.casadocodigo.api.validator.UniqueValue;
+import br.com.zupacademy.felipe.gadelha.casadocodigo.api.validator.annotation.UniqueValue;
 import br.com.zupacademy.felipe.gadelha.casadocodigo.domain.entity.Nation;
 
 public class NationRq {

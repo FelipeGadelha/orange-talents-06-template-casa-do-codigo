@@ -15,7 +15,7 @@ import org.hibernate.validator.constraints.ISBN;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.util.Assert;
 
-import br.com.zupacademy.felipe.gadelha.casadocodigo.api.validator.UniqueValue;
+import br.com.zupacademy.felipe.gadelha.casadocodigo.api.validator.annotation.UniqueValue;
 import br.com.zupacademy.felipe.gadelha.casadocodigo.domain.entity.Author;
 import br.com.zupacademy.felipe.gadelha.casadocodigo.domain.entity.Book;
 import br.com.zupacademy.felipe.gadelha.casadocodigo.domain.entity.Category;

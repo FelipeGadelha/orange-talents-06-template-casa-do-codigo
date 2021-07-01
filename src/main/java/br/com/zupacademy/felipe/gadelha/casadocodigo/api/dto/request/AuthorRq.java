@@ -6,8 +6,7 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
 
-
-import br.com.zupacademy.felipe.gadelha.casadocodigo.api.validator.UniqueValue;
+import br.com.zupacademy.felipe.gadelha.casadocodigo.api.validator.annotation.UniqueValue;
 import br.com.zupacademy.felipe.gadelha.casadocodigo.domain.entity.Author;
 
 public class AuthorRq {
